@@ -7,10 +7,9 @@ ENV PYTHONUNBUFFERED=1 \
 
 WORKDIR /app
 
-# Install system dependencies for build and PostgreSQL client library
+# Install system dependencies for build
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
-    libpq-dev \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
@@ -28,6 +27,7 @@ COPY . .
 # Ensure media and database directories exist and have proper permissions
 RUN mkdir -p data temp_ads static/generated_ads
 
-EXPOSE 8000
+EXPOSE 10000
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Use shell form so $PORT is expanded at runtime (Render injects PORT dynamically)
+CMD uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
