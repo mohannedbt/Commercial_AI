@@ -7,13 +7,23 @@ import asyncio
 import numpy as np
 import cv2
 from PIL import Image
-from rembg import remove
-from rembg.session_factory import new_session
 from playwright.sync_api import sync_playwright
 
 # Setup logging
 logger = logging.getLogger("adgen.visual")
-RMBG_SESSION = new_session("isnet-general-use")
+
+# Lazy-loaded rembg session — only initialized on first use, not at import time.
+# This prevents blocking the server startup on Render (model download can take time).
+_RMBG_SESSION = None
+
+def _get_rmbg_session():
+    global _RMBG_SESSION
+    if _RMBG_SESSION is None:
+        from rembg import remove
+        from rembg.session_factory import new_session
+        logger.info("Initializing rembg session (first use)...")
+        _RMBG_SESSION = new_session("isnet-general-use")
+    return _RMBG_SESSION
 
 # def ultra_cutout(image_bytes: bytes) -> bytes:
 #     """Refined background removal with morphology cleanup and tight cropping."""
