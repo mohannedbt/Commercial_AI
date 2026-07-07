@@ -3,22 +3,21 @@ services:
   - type: web
     name: architect-backend
     env: docker
-    dockercontext: ./backend
+    dockerContext: ./backend
     dockerfilePath: ./backend/Dockerfile
-    plan: free # Free tier is suitable for testing, though builds may take a few minutes
+    plan: free
     envVars:
       - key: GOOGLE_API_KEY
-        sync: false # You will fill this in the Render dashboard
+        sync: false
       - key: PLAYWRIGHT_BROWSERS_PATH
         value: /ms-playwright
 
   # 2. React Frontend (Static Site)
-  - type: web
+  - type: web_static
     name: architect-frontend
-    env: static
-    rootDirectory: frontend
+    rootDir: frontend
     buildCommand: npm install && npm run build
     publishPath: dist
     envVars:
       - key: VITE_API_BASE_URL
-        sync: false # You will set this to your backend's Render URL (e.g. https://architect-backend.onrender.com)
+        sync: false
