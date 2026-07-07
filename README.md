@@ -275,9 +275,9 @@ You can deploy the complete stack to Render.com using the included [render.yaml]
 
 1. Push your repository to GitHub or GitLab.
 2. Go to the **Render Dashboard**, click **New +**, and select **Blueprint**.
-3. Connect your repository. Render will automatically parse the `render.yaml` specification to provision the database, FastAPI container, and React frontend.
+3. Connect your repository. Render will automatically parse the `render.yaml` specification to provision the FastAPI container and React static site.
 4. Input your `GOOGLE_API_KEY` (for Gemini API) on the Render setup page.
-5. Once backend is deployed, copy its URL and paste it under `VITE_API_BASE_URL` in the frontend service environment variables.
+5. Render will automatically link the backend's address to the frontend during deployment.
 
 ---
 
