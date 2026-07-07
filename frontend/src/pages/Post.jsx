@@ -15,6 +15,7 @@ import {
   Facebook,
   Hash
 } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 const Post = ({ selectedBrandId }) => {
   // Form States
@@ -36,7 +37,7 @@ const Post = ({ selectedBrandId }) => {
   const [error, setError] = useState(null);
   const [copiedPlatform, setCopiedPlatform] = useState(null);
 
-  const API_BASE = "http://127.0.0.1:8000/api";
+  const API_BASE = `${API_BASE_URL}/api`;
 
   // Fetch available brands on mount
   useEffect(() => {

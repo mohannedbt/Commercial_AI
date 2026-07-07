@@ -4,6 +4,7 @@ import {
   User, ShoppingBag, Target, Zap, RefreshCw, Eye, Clock,
   Heart, Gift, Bell, Star, MessageCircle, Award
 } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 // Email type icons mapping
 const emailTypeIcons = {
@@ -169,7 +170,7 @@ const ChipInput = ({ label, items, onAdd, onRemove, placeholder }) => {
 };
 
 const EmailComposer = ({ selectedBrandId }) => {
-  const API_URL = "http://127.0.0.1:8000";
+  const API_URL = API_BASE_URL;
 
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);

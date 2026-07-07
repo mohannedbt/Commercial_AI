@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ImageIcon, Loader2, Tag, Users, ArrowRight } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 const ProductGenerator = ({ onImageGenerated, selectedBrandId }) => {
   const [productName, setProductName] = useState('');
@@ -11,7 +12,7 @@ const ProductGenerator = ({ onImageGenerated, selectedBrandId }) => {
   const handleGenerate = async () => {
     setIsGenerating(true);
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/generate-image", {
+      const response = await fetch(`${API_BASE_URL}/api/generate-image`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

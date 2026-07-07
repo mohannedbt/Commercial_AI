@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Target, PieChart, Building2, Wallet, Sparkles, Loader2, BarChart3, ChevronLeft, Copy, Check } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 // Helper function to parse and render markdown-style content
 const FormattedContent = ({ content }) => {
@@ -148,7 +149,7 @@ const CampaignForm = ({ onCampaignGenerated }) => {
   };
 
   try {
-    const response = await fetch("http://localhost:8000/api/create-campaign", {
+    const response = await fetch(`${API_BASE_URL}/api/create-campaign`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),

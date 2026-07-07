@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Send, Loader2, Copy, CheckCircle2, Image as ImageIcon, Tag, DollarSign, Gift, Users, FileText } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 const PostGenerator = ({ selectedBrandId }) => {
-  const API_BASE = "http://127.0.0.1:8000/api";
+  const API_BASE = `${API_BASE_URL}/api`;
 
   // Form state matching Product model
   const [formData, setFormData] = useState({

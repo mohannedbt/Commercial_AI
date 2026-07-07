@@ -26,6 +26,8 @@
   - [Prerequisites](#prerequisites)
   - [Backend Setup](#backend-setup)
   - [Frontend Setup](#frontend-setup)
+  - [Docker Setup (Production Ready)](#docker-setup-production-ready)
+  - [Cloud Deployment (Render.com)](#️-cloud-deployment-rendercom)
 - [API Documentation](#-api-documentation)
 - [Project Structure](#-project-structure)
 - [Usage Guide](#-usage-guide)
@@ -141,7 +143,7 @@ Generate personalized marketing emails at scale:
 |------------|---------|
 | **FastAPI** | High-performance Python web framework |
 | **SQLAlchemy** | ORM for database operations |
-| **SQLite** | Lightweight database for brand storage |
+| **SQLite / PostgreSQL** | Relational databases for brand data storage |
 | **Google Gemini** | LLM for content generation |
 | **Hugging Face** | Stable Diffusion XL for image generation |
 | **Playwright** | Browser automation for ad rendering |
@@ -225,6 +227,57 @@ Generate personalized marketing emails at scale:
    ```
 
    The application will be available at `http://localhost:5173`
+
+### Docker Setup (Production Ready)
+
+For production deployment or a quick, zero-config run, you can launch the complete application stack (Frontend, Backend, and PostgreSQL database) using Docker Compose.
+
+1. **Prerequisites:**
+   Make sure you have [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) installed.
+
+2. **Configure Environment Variables:**
+   Copy the example environment file to `.env` in the root directory:
+   ```bash
+   cp .env.example .env
+   ```
+   Open the `.env` file and add your Google Gemini API Key:
+   ```env
+   GOOGLE_API_KEY=your_actual_gemini_api_key
+   ```
+
+3. **Start the Application Stack:**
+   Run the following command at the root of the project to build and start the containers:
+   ```bash
+   docker compose up --build -d
+   ```
+
+4. **Verify Running Containers:**
+   Ensure all services are running:
+   ```bash
+   docker compose ps
+   ```
+
+5. **Access the Services:**
+   - **Frontend (Application UI):** `http://localhost` (Port 80)
+   - **Backend API Docs:** `http://localhost/docs` (Proxied via Nginx)
+   - **Direct Backend API:** `http://localhost:8000`
+   - **PostgreSQL Database:** `localhost:5432`
+
+6. **Stop the Application:**
+   To stop and remove the containers, networks, and volumes:
+   ```bash
+   docker compose down
+   ```
+
+### ☁️ Cloud Deployment (Render.com)
+
+You can deploy the complete stack to Render.com using the included [render.yaml](file:///home/mohanned/Desktop/Projects/TuniHack/render.yaml) Blueprint:
+
+1. Push your repository to GitHub or GitLab.
+2. Go to the **Render Dashboard**, click **New +**, and select **Blueprint**.
+3. Connect your repository. Render will automatically parse the `render.yaml` specification to provision the database, FastAPI container, and React frontend.
+4. Input your `GOOGLE_API_KEY` (for Gemini API) on the Render setup page.
+5. Once backend is deployed, copy its URL and paste it under `VITE_API_BASE_URL` in the frontend service environment variables.
 
 ---
 

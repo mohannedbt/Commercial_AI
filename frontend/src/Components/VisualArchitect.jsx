@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Sparkles, Loader2, Wand2, Download, AlertCircle, Image as ImageIcon, Users, Tag } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 const VisualArchitect = ({ selectedBrandId }) => {
   // Input States
@@ -16,7 +17,7 @@ const VisualArchitect = ({ selectedBrandId }) => {
   const [error, setError] = useState(null);
 
   // Note: Match this to your FastAPI port
-  const API_BASE = "http://127.0.0.1:8000/api";
+  const API_BASE = `${API_BASE_URL}/api`;
 
   // --- Step 1: Generate the base product image (Text-to-Image) ---
   const handleGenerateImage = async () => {

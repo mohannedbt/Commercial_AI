@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Target, Loader2, Copy, CheckCircle2, Users, DollarSign, Building2, Flag, TrendingUp } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 const CampaignGenerator = ({ selectedBrandId }) => {
-  const API_BASE = "http://127.0.0.1:8000/api";
+  const API_BASE = `${API_BASE_URL}/api`;
 
   // Form state matching Campaign model
   const [formData, setFormData] = useState({

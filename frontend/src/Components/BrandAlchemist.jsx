@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Save, Plus, X, Fingerprint, Loader2, CheckCircle2 } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 const BrandProfileForm = ({ onBrandSelected }) => {
-  const API_URL = "http://127.0.0.1:8000/api/brands";
+  const API_URL = `${API_BASE_URL}/api/brands`;
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);

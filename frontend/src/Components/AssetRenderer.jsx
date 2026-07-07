@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Wand2, Loader2, Download, Sparkles, Upload, Image as ImageIcon, X } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 const AssetRenderer = ({ selectedBrandId }) => {
   const [style, setStyle] = useState('Minimalist Luxury');
@@ -36,7 +37,7 @@ const AssetRenderer = ({ selectedBrandId }) => {
         formData.append("brand_id", selectedBrandId);
       }
 
-      const response = await fetch("http://127.0.0.1:8000/api/generate-ad", {
+      const response = await fetch(`${API_BASE_URL}/api/generate-ad`, {
         method: "POST",
         body: formData,
       });
