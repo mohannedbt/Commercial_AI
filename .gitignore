@@ -1,0 +1,7 @@
+.idea
+roadmap.md
+.env.example
+.env
+.venv/
+__pycache__/
+*.pyc

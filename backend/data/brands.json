@@ -1,0 +1,25 @@
+[
+  {
+    "id": 1,
+    "name": "TechFlow",
+    "tone": "professional",
+    "tagline": "Innovation at your fingertips",
+    "values": [
+      "innovation",
+      "reliability"
+    ],
+    "keywords_include": [
+      "cutting-edge",
+      "seamless"
+    ],
+    "keywords_avoid": [
+      "cheap",
+      "basic"
+    ],
+    "target_emotion": "confidence",
+    "example_posts": [
+      "Discover the future of productivity. \ud83d\ude80"
+    ],
+    "style_guidelines": "Use short, punchy sentences."
+  }
+]

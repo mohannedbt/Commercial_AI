@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pillow
+python-dotenv
+httpx
+pydantic
+pydantic-settings
+huggingface-hub[inference]
+dotenv
+google-genai
+numpy
+opencv-python
+playwright
+numpy
+rembg[cpu]
+sqlalchemy
